@@ -28,7 +28,7 @@ describe('Gift card', () => {
 });
 
 const store = {
-  getData: () => Promise.all([
+  getData: () => Promise.resolve([
     {
       lastName: 'Jimenez',
       firstName: 'Carlos test',
@@ -43,9 +43,9 @@ const sender = {
 };
 
 describe('GiftCard controller', () => {
-  it('send basic info', () => {
+  it('send basic info', async () => {
     const { giftYourFriends } = controller({ store, sender });
-    giftYourFriends();
+    await giftYourFriends();
     expect(sender.send).toHaveBeenCalledTimes(1);
   });
 });
